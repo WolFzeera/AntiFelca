@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Anti Felca</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css?v=8">
+    <!-- Three.js and loaders -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.0/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js"></script>
+    
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Initial Screen -->
+        <div id="initial-screen" class="screen active">
+            <img src="favicon.ico" alt="Anti Felca Logo" class="main-logo">
+            <h1 class="glitch" data-title="Anti Felca">Anti Felca</h1>
+            <h2>Tipo de verificação</h2>
+            <div class="options">
+                <button id="btn-cpf" class="btn">Gerador de CPF</button>
+                <button id="btn-foto" class="btn">Verificação por foto</button>
+                <button id="btn-cc" class="btn">Bypass Cartão (BIN $0)</button>
+            </div>
+            
+            <div class="disclaimer" style="margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); text-align: center; max-width: 400px; line-height: 1.4;">
+                <p>⚠️ <strong>Aviso:</strong> Tudo apresentado aqui é 100% legal, gerado aleatoriamente (sintético) e não possui nenhum dado de pessoas reais.</p>
+                <p style="margin-top: 5px; color: var(--primary-color);">Créditos totais do projeto a <strong>zZJester</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Tela Gerador CPF -->
+        <div id="cpf-screen" class="screen">
+            <button class="btn-back">Voltar</button>
+            <img src="favicon.ico" alt="Anti Felca Logo" class="small-logo">
+            <h2>Gerador de CPF</h2>
+            <div class="cpf-display-box">
+                <span id="cpf-value">***.***.***-**</span>
+                <button id="btn-copy-cpf" class="btn-icon" title="Copiar CPF">📋</button>
+            </div>
+            <button id="btn-generate-cpf" class="btn">Gerar Novo CPF</button>
+        </div>
+
+        <!-- Tela Gerador Cartão Sintético -->
+        <div id="cc-screen" class="screen">
+            <button class="btn-back">← Voltar</button>
+            <img src="favicon.ico" alt="Anti Felca Logo" class="app-logo" style="width: 50px; height: 50px;">
+            <div class="card">
+                <h2>Cartão Sintético (Voucher/Prepaid)</h2>
+                <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 15px;">Desenvolvido para auditoria e autorizações $0</p>
+                
+                <div class="cpf-display" style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 15px;">
+                    <div style="width: 100%; display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Número:</span>
+                        <div style="display: flex; gap: 10px;">
+                            <span id="cc-number" style="font-family: monospace; color: var(--primary-color);">...</span>
+                            <button id="btn-copy-cc" class="btn-icon" title="Copiar">📋</button>
+                        </div>
+                    </div>
+                    <div style="width: 100%; display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Validade:</span>
+                        <span id="cc-exp" style="font-family: monospace; color: var(--text-color);">...</span>
+                    </div>
+                    <div style="width: 100%; display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">CVV:</span>
+                        <span id="cc-cvv" style="font-family: monospace; color: var(--text-color);">...</span>
+                    </div>
+                </div>
+                <button id="btn-generate-cc" class="btn" style="margin-top: 15px;">Gerar Novo Cartão</button>
+            </div>
+        </div>
+
+        <!-- 3D Viewer Screen -->
+        <div id="foto-screen" class="screen">
+            <div class="foto-header">
+                <button class="btn-back">Voltar</button>
+            </div>
+            
+            <div id="loading-overlay">
+                <div class="spinner"></div>
+                <p>Carregando Modelo 3D...</p>
+            </div>
+
+            <div id="canvas-container"></div>
+            
+            <div class="controls-panel">
+                <div class="btn-group">
+                    <button id="btn-left" class="btn-control">Rosto Esq (A)</button>
+                    <button id="btn-right" class="btn-control">Rosto Dir (D)</button>
+                </div>
+                <p class="hint">Use o mouse para rotacionar a câmera.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js?v=19"></script>
+</body>
+</html>
