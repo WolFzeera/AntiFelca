@@ -6,19 +6,15 @@
     <title>Anti Felca</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css?v=8">
-    <!-- Three.js and loaders -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.0/umd/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js"></script>
-    
-    <!-- Google Fonts for Modern Typography -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <!-- Initial Screen -->
         <div id="initial-screen" class="screen active">
             <img src="favicon.ico" alt="Anti Felca Logo" class="main-logo">
             <h1 class="glitch" data-title="Anti Felca">Anti Felca</h1>
@@ -28,21 +24,15 @@
                 <button id="btn-foto" class="btn">Verificação por foto</button>
                 <button id="btn-cc" class="btn">Bypass Cartão (BIN $0)</button>
             </div>
-            
             <div class="disclaimer" style="margin-top: 30px; padding: 25px; border: 1px dashed var(--border-color); background: rgba(0,0,0,0.5); border-radius: 8px; font-size: 0.75rem; color: var(--text-muted); text-align: justify; max-width: 600px; line-height: 1.6; overflow-y: auto; max-height: 250px;">
                 <h3 style="color: var(--primary-color); text-align: center; margin-bottom: 15px; font-size: 0.9rem;">⚠️ TERMOS DE USO E AVISO LEGAL DE CONFORMIDADE ⚠️</h3>
                 <p style="margin-bottom: 10px;"><strong>1. Fim Estritamente Educacional:</strong> O "Anti Felca" foi idealizado e é distribuído **única e exclusivamente para fins de pesquisa em segurança da informação**, auditoria de qualidade de sistemas de software, simulações algorítmicas computacionais e educação tecnológica. Ele não possui finalidade comercial nem vínculo com nenhum sistema governamental, instituição financeira ou plataforma corporativa real.</p>
-                
                 <p style="margin-bottom: 10px;"><strong>2. Tratamento de Dados e Conformidade LGPD:</strong> Declaramos que <strong>nenhum dado pessoal, bancário ou financeiro real é coletado, armazenado, utilizado ou repassado</strong> nesta página. Todas as validações visuais em 3D e cadeias numéricas (como CPFs, Módulo 11) geradas são <strong>100% sintéticas, algorítmicas, abstratas e aleatórias</strong>, operando de forma offline direto do lado-cliente (client-side render). Desta forma, operamos em perfeita harmonia com os princípios da Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), do Marco Civil da Internet e resoluções relativas a fraudes, uma vez que não geramos identidades fáticas ou dados verídicos.</p>
-                
                 <p style="margin-bottom: 10px;"><strong>3. Isenção Total de Responsabilidade de Fato (Disclaimer of Liability):</strong> O prosseguimento, execução, exportação ou aplicação dos códigos e visuais disponibilizados nesta suíte educacional são de <strong>inteira, absoluta e exclusiva responsabilidade da pessoa que os processar (o Usuário Final)</strong>. Ao prosseguir, o usuário assume o total prejuízo cível, administrativo e penal pela sua má conduta originária a partir do uso (ex: uso indevido contra terceiros, tentativas de burlar checagens KYC/Anti-Fraude, liveness, falsidade ideológica ou spoofing). O desenvolvedor não se responsabiliza nem encoraja o redirecionamento destas ferramentas-conceito fora de escopos de desenvolvimento autorizados ("Bounty", "QA", "Red Teaming" próprio).</p>
-
                 <p style="margin-top: 20px; font-weight: bold; text-align: center;">AO AVANÇAR NESTA APLICAÇÃO ACESSANDO AS TELAS, VOCÊ COMPREENDE E ACEITA IRREVOGAVELMENTE A CONDIÇÃO DA CULPA EXCLUSIVA, ISENTANDO TOTALMENTE SEUS AUTORES DE QUALQUER DEVER VINCULATÓRIO.</p>
                 <div style="margin-top: 20px; font-size: 0.85rem; color: var(--text-color); text-align: center;">Créditos da idealização do projeto a <strong>zZJester</strong>.</div>
             </div>
         </div>
-
-        <!-- Tela Gerador CPF -->
         <div id="cpf-screen" class="screen">
             <button class="btn-back">Voltar</button>
             <img src="favicon.ico" alt="Anti Felca Logo" class="small-logo">
@@ -53,15 +43,12 @@
             </div>
             <button id="btn-generate-cpf" class="btn">Gerar Novo CPF</button>
         </div>
-
-        <!-- Tela Gerador Cartão Sintético -->
         <div id="cc-screen" class="screen">
             <button class="btn-back">← Voltar</button>
             <img src="favicon.ico" alt="Anti Felca Logo" class="app-logo" style="width: 50px; height: 50px;">
             <div class="card">
                 <h2>Cartão Sintético (Voucher/Prepaid)</h2>
                 <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 15px;">Desenvolvido para auditoria e autorizações $0</p>
-                
                 <div class="cpf-display" style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 15px;">
                     <div style="width: 100%; display: flex; justify-content: space-between;">
                         <span style="font-size: 0.9rem; color: var(--text-muted);">Número:</span>
@@ -82,30 +69,28 @@
                 <button id="btn-generate-cc" class="btn" style="margin-top: 15px;">Gerar Novo Cartão</button>
             </div>
         </div>
-
-        <!-- 3D Viewer Screen -->
         <div id="foto-screen" class="screen">
             <div class="foto-header">
                 <button class="btn-back">Voltar</button>
             </div>
-            
             <div id="loading-overlay">
                 <div class="spinner"></div>
                 <p>Carregando Modelo 3D...</p>
             </div>
-
             <div id="canvas-container"></div>
-            
             <div class="controls-panel">
-                <div class="btn-group">
+                <div class="btn-group" style="display: flex; gap: 8px; margin-bottom: 10px;">
                     <button id="btn-left" class="btn-control">Rosto Esq (A)</button>
                     <button id="btn-right" class="btn-control">Rosto Dir (D)</button>
                 </div>
-                <p class="hint">Use o mouse para rotacionar a câmera.</p>
+                <div class="control-box" style="width: 100%; text-align: center;">
+                    <label for="mouth-slider" class="hint" style="display:block; margin-bottom: 5px;">Abertura da Mandíbula (W)</label>
+                    <input type="range" id="mouth-slider" min="0" max="1" step="0.01" value="0" style="width: 100%; accent-color: var(--primary-color);">
+                </div>
+                <p class="hint" style="margin-top: 10px;">Use o mouse para rotacionar a câmera.</p>
             </div>
         </div>
     </div>
-    
     <script src="script.js?v=19"></script>
 </body>
 </html>

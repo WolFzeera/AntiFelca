@@ -1,32 +1,29 @@
 :root {
-    --bg-color: #050505; /* Deep black */
+    --bg-color: #050505; 
     --surface-color: #111111; 
-    --primary-color: #e50914; /* Netflix/Resident Evil Red */
+    --primary-color: #e50914; 
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
     --border-color: #333333;
     --border-hover: #e50914;
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-stack);
-    overflow: hidden; /* App-like feel, no scroll */
+    overflow: hidden; 
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: radial-gradient(circle at 50% 0%, #1f2937 0%, transparent 60%);
 }
-
 #app {
     width: 100%;
     max-width: 600px;
@@ -35,29 +32,25 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    min-height: 100vh; /* Ensure app takes full height for centering */
+    min-height: 100vh; 
 }
-
 .screen {
     display: none;
     width: 100%;
     animation: fadeIn 0.3s ease;
-    flex-grow: 1; /* Allow screens to take available space */
-    justify-content: center; /* Center content vertically within screen */
-    align-items: center; /* Center content horizontally within screen */
+    flex-grow: 1; 
+    justify-content: center; 
+    align-items: center; 
 }
-
 .screen.active {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -67,7 +60,6 @@ h1 {
     letter-spacing: 2px;
     text-align: center;
 }
-
 h2 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -75,7 +67,6 @@ h2 {
     color: var(--text-muted);
     text-align: center;
 }
-
 .options {
     display: flex;
     flex-direction: column;
@@ -83,58 +74,57 @@ h2 {
     width: 100%;
     max-width: 320px;
 }
-
 .btn {
     text-decoration: none;
-    border: none;
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: 15px 24px;
-    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 12px 24px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     width: 100%;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
-
 .btn:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: rgba(229, 9, 20, 0.05);
+    box-shadow: none;
+    transform: none;
 }
-
 .btn:active {
-    transform: translateY(0);
+    background: rgba(229, 9, 20, 0.1);
 }
-
 .btn-back {
     position: absolute;
     top: 20px;
     left: 20px;
     background: transparent;
     color: var(--text-muted);
-    border: 1px solid var(--text-muted);
+    border: 1px solid var(--border-color);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
     z-index: 100;
 }
-
 .btn-back:hover {
-    color: var(--text-color);
-    border-color: var(--text-color);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: rgba(229, 9, 20, 0.05);
 }
-
-/* CPF Screen */
 .cpf-display-box {
     background: var(--panel-bg);
     border: 1px solid rgba(255,255,255,0.1);
@@ -146,7 +136,6 @@ h2 {
     gap: 15px;
     backdrop-filter: blur(10px);
 }
-
 #cpf-value {
     font-size: 2rem;
     font-family: monospace;
@@ -154,7 +143,6 @@ h2 {
     letter-spacing: 2px;
     color: var(--primary-color);
 }
-
 .btn-icon {
     background: transparent;
     border: none;
@@ -162,13 +150,11 @@ h2 {
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s;
-    color: var(--text-color); /* Ensure icon color is visible */
+    color: var(--text-color); 
 }
 .btn-icon:hover {
     opacity: 1;
 }
-
-/* 3D Viewer Screen */
 #canvas-container {
     width: 100vw;
     height: 100vh;
@@ -177,7 +163,6 @@ h2 {
     left: 0;
     z-index: 1;
 }
-
 .controls-panel {
     display: flex;
     flex-direction: column;
@@ -187,9 +172,9 @@ h2 {
     max-width: 400px;
     position: absolute;
     bottom: 20px;
-    right: 20px; /* Moved to bottom-right */
-    left: auto; /* Reset left */
-    transform: none; /* Reset transform */
+    right: 20px; 
+    left: auto; 
+    transform: none; 
     z-index: 10;
     background: rgba(9, 11, 8, 0.6);
     padding: 15px;
@@ -197,41 +182,38 @@ h2 {
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
 }
-
 .controls-panel h3 {
     display: none;
 }
-
 .control-grid {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin-bottom: 5px;
 }
-
 .btn-control {
-    background: rgba(0, 255, 204, 0.05);
+    background: transparent;
     border: 1px solid var(--border-color);
-    color: var(--primary-color);
+    color: var(--text-color);
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
 }
-
 .btn-control:hover, .btn-control.active {
-    background: rgba(0, 255, 204, 0.15);
-    border-color: var(--border-hover);
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    background: rgba(229, 9, 20, 0.05);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: none;
 }
-
 #foto-screen {
     position: fixed;
     top: 0;
@@ -240,8 +222,19 @@ h2 {
     width: 100vw;
     padding: 0;
     background: #000000;
+    overflow: hidden;
 }
-
+#foto-screen::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: url('bg_house.png') center/cover no-repeat;
+    filter: blur(15px);
+    z-index: 0;
+}
 .foto-header {
     width: 100%;
     display: flex;
@@ -251,12 +244,10 @@ h2 {
     left: 20px;
     z-index: 10;
 }
-
 .hint {
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.3);
 }
-
 #loading-overlay {
     position: absolute;
     top: 50%;
@@ -272,7 +263,6 @@ h2 {
     border: 1px solid var(--border-color);
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
 }
-
 .spinner {
     width: 40px;
     height: 40px;
@@ -282,34 +272,27 @@ h2 {
     animation: spin 1s linear infinite;
     margin-bottom: 15px;
 }
-
 @keyframes spin {
     100% { transform: rotate(360deg); }
 }
-
-/* Logos */
 .main-logo {
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
     opacity: 0.9;
 }
-
 .small-logo {
     width: 50px;
     height: 50px;
     margin-bottom: 15px;
     opacity: 0.7;
 }
-
 .tiny-logo {
     width: 30px;
     height: 30px;
     margin-bottom: 10px;
     opacity: 0.5;
 }
-
-/* Glitch Effect for Title */
 .glitch {
     position: relative;
 }
@@ -334,7 +317,6 @@ h2 {
     clip: rect(85px, 550px, 140px, 0);
     animation: glitch-anim 2.5s infinite linear alternate-reverse;
 }
-
 @keyframes glitch-anim {
     0% { clip: rect(15px, 9999px, 86px, 0); }
     20% { clip: rect(72px, 9999px, 11px, 0); }
@@ -343,8 +325,6 @@ h2 {
     80% { clip: rect(32px, 9999px, 92px, 0); }
     100% { clip: rect(55px, 9999px, 2px, 0); }
 }
-
-/* Responsiveness adjustments */
 @media (min-width: 768px) {
     .controls-panel {
         bottom: 30px;
