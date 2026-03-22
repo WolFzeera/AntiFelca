@@ -163,9 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.mixer = null;
         let clock = new THREE.Clock();
         const loader = new THREE.GLTFLoader();
+        const dracoLoader = new THREE.DRACOLoader();
+        dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/');
+        loader.setDRACOLoader(dracoLoader);
         const overlay = document.getElementById('loading-overlay');
         loader.load(
-            'Leon.glb',
+            'Leon_compressed.glb',
             (gltf) => {
                 const object = gltf.scene;
                 leonModel = object;
